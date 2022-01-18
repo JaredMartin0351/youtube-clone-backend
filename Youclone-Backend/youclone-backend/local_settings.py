@@ -9,7 +9,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'drf_jwt_database',
         'USER': 'root',
-        'PASSWORD': 'YOUR MYSQL PASSWORD HERE',
+        'PASSWORD': 'Jared0351!',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
