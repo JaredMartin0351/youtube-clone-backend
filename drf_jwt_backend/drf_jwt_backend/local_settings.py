@@ -9,11 +9,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'drf_jwt_database',
         'USER': 'root',
-<<<<<<< HEAD:drf_jwt_backend/drf_jwt_backend/local_settings.py
         'PASSWORD': 'Aghalebi33',
-=======
-        'PASSWORD': 'Jared0351!',
->>>>>>> 1ecbb00774f67d8510ab74abac2d395f5a22d509:Youclone-Backend/youclone-backend/local_settings.py
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
