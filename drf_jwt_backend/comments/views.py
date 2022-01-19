@@ -43,6 +43,21 @@ def get_all_replies(request):
     return Response(serializer.data) 
 
 
+@api_view(['POST', 'GET'])
+@permission_classes([IsAuthenticated])
+def create_reply(request):
+    if request.method == 'POST':
+        serializer = ReplySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        comment = Comment.objects.filter(user_id=request.user.id)
+        serializer = ReplySerializer(comment, many=True)
+        return Response(serializer.data) 
+
+
 
 
 # class SongList(APIView):
