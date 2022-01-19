@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from .serializers import CommentSerializer, ReplySerializer
 from django.shortcuts import render
 from .models import Comment, Reply 
+from django.http.response import Http404
 
 
 # class CommentList(APIView):
@@ -18,6 +19,19 @@ def get_all_comments(request):
     serializer = CommentSerializer(comment,many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_comment(pk):
+    try:
+        comment = Comment.objects.get(pk=pk)
+        return comment
+    except Comment.DoesNotExist:
+        raise Http404
+
+# def get(request):
+#         song = Song.objects.all()
+#         serializer = SongSerializer(song, many=True)
+#         return Response(serializer.data)
 
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
@@ -32,6 +46,27 @@ def create_comment(request):
         comment = Comment.objects.filter(user_id=request.user.id)
         serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data) 
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_comment(request, pk):
+    comment = get_comment(pk)
+    serializer = CommentSerializer(comment, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+#def put(self, request, pk):     #update one song 
+#         song = self.get_object(pk)
+#         serializer = SongSerializer(song, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 @api_view(['GET'])
