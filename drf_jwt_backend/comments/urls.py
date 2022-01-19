@@ -6,6 +6,6 @@ from comments import views
 
 urlpatterns = [
     path('all/', views.get_all_comments),
-    path('', views.create_comment),
-    path('', views.get_all_replies),
+    path('create/', views.create_comment),
+    path('all/replies/', views.get_all_replies),
 ]
