@@ -14,8 +14,8 @@ from django.http.response import Http404
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_comments(request):
-    comment = Comment.objects.all()  
+def get_video_comments(request, video_id):
+    comment = Comment.objects.filter(video_id=video_id)  
     serializer = CommentSerializer(comment,many=True)
     return Response(serializer.data)
 
