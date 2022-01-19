@@ -8,9 +8,9 @@ from .serializers import CommentSerializer, ReplySerializer
 from django.shortcuts import render
 from .models import Comment, Reply 
 
-class CommentList(APIView):
 
-# Helper function
+# class CommentList(APIView):
+
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_comments(request):
