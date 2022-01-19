@@ -10,6 +10,6 @@ class Comment(models.Model):
 
 class Reply(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE )
-    comment = models.CharField(max_length=500)
+    comment = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.CharField(max_length=500)
     
