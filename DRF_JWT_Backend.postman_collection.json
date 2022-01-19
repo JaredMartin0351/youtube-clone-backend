@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "da3153ab-300b-44e5-8b13-a8038225f4b4",
+		"_postman_id": "71fc16a9-7ee7-4aee-b6f9-7d9b6c7b66bf",
 		"name": "DRF_JWT_Backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -105,6 +105,375 @@
 								"auth",
 								"login",
 								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get_Comment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDg2NDY5LCJpYXQiOjE2NDI2MjI0NjksImp0aSI6IjliZTg5YmIzNjYyNjRkNjRiMmNlNjNjNjk0YWE2NmM3IiwidXNlcl9pZCI6Mn0.01ZJJHhtZTYQkoXiuo4KWKrFm1kqQN6gpFQQC9m86ps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_All_Comments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_All_Video_Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDg2NDY5LCJpYXQiOjE2NDI2MjI0NjksImp0aSI6IjliZTg5YmIzNjYyNjRkNjRiMmNlNjNjNjk0YWE2NmM3IiwidXNlcl9pZCI6Mn0.01ZJJHhtZTYQkoXiuo4KWKrFm1kqQN6gpFQQC9m86ps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/all/video1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"all",
+								"video1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_New_Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDg2NDY5LCJpYXQiOjE2NDI2MjI0NjksImp0aSI6IjliZTg5YmIzNjYyNjRkNjRiMmNlNjNjNjk0YWE2NmM3IiwidXNlcl9pZCI6Mn0.01ZJJHhtZTYQkoXiuo4KWKrFm1kqQN6gpFQQC9m86ps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 2,\r\n    \"video_id\": \"video1\",\r\n    \"text\": \"hello from comments trial\",\r\n    \"likes\": 30,\r\n    \"dislikes\": 45\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit_Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDc1MDE5LCJpYXQiOjE2NDI2MTEwMTksImp0aSI6ImIxMTk3ZjM1NGMxZTQ2NTU4MGFjMjc3MzcxZWZlNGY1IiwidXNlcl9pZCI6Mn0.wVQ6dCNRCpMq9CP422S5Zcs-rUlbjPUsefP_7Y44irU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 32,\r\n        \"user\": 2,\r\n        \"video_id\": \"axasdasd777\",\r\n        \"text\": \"hello from comments number2 edit\",\r\n        \"likes\": 30,\r\n        \"dislikes\": 45\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/edit/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"edit",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Reply",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDg2NDY5LCJpYXQiOjE2NDI2MjI0NjksImp0aSI6IjliZTg5YmIzNjYyNjRkNjRiMmNlNjNjNjk0YWE2NmM3IiwidXNlcl9pZCI6Mn0.01ZJJHhtZTYQkoXiuo4KWKrFm1kqQN6gpFQQC9m86ps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/reply/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"reply",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_All_Replies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDc1MDE5LCJpYXQiOjE2NDI2MTEwMTksImp0aSI6ImIxMTk3ZjM1NGMxZTQ2NTU4MGFjMjc3MzcxZWZlNGY1IiwidXNlcl9pZCI6Mn0.wVQ6dCNRCpMq9CP422S5Zcs-rUlbjPUsefP_7Y44irU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/all/replies/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"all",
+								"replies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_New_Reply",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDc1MDE5LCJpYXQiOjE2NDI2MTEwMTksImp0aSI6ImIxMTk3ZjM1NGMxZTQ2NTU4MGFjMjc3MzcxZWZlNGY1IiwidXNlcl9pZCI6Mn0.wVQ6dCNRCpMq9CP422S5Zcs-rUlbjPUsefP_7Y44irU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 1 ,\r\n    \"comment\": 2,\r\n    \"text\": \"reply from reply\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/create/reply/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"create",
+								"reply",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQzNDg2NDY5LCJpYXQiOjE2NDI2MjI0NjksImp0aSI6IjliZTg5YmIzNjYyNjRkNjRiMmNlNjNjNjk0YWE2NmM3IiwidXNlcl9pZCI6Mn0.01ZJJHhtZTYQkoXiuo4KWKrFm1kqQN6gpFQQC9m86ps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/delete/6/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"delete",
+								"6",
 								""
 							]
 						}
