@@ -11,7 +11,6 @@ from django.http.response import Http404
 
 
 
-
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_video_comments(request, video_id):
