@@ -10,7 +10,7 @@ from .models import Comment, Reply
 from django.http.response import Http404
 
 
-# class CommentList(APIView):
+
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
@@ -18,6 +18,7 @@ def get_video_comments(request, video_id):
     comment = Comment.objects.filter(video_id=video_id)  
     serializer = CommentSerializer(comment,many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
@@ -29,10 +30,6 @@ def get_comment(request, pk):
     except Comment.DoesNotExist:
         raise Http404
 
-# def get(request):
-#         song = Song.objects.all()
-#         serializer = SongSerializer(song, many=True)
-#         return Response(serializer.data)
 
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
@@ -48,6 +45,7 @@ def create_comment(request):
         serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data) 
 
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_comment(request, pk):
@@ -59,17 +57,6 @@ def update_comment(request, pk):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-#def put(self, request, pk):     #update one song 
-#         song = self.get_object(pk)
-#         serializer = SongSerializer(song, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_all_replies(request):
@@ -77,6 +64,7 @@ def get_all_replies(request):
     serializer = ReplySerializer 
     serializer = ReplySerializer(reply,many=True)
     return Response(serializer.data) 
+
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
@@ -104,43 +92,13 @@ def create_reply(request):
         return Response(serializer.data) 
 
 
-
-
-# class SongList(APIView):
-    
-#     def get(self, request):
-#         song = Song.objects.all()
-#         serializer = SongSerializer(song, many=True)
-#         return Response(serializer.data)
-           
-#     def post(self, request):
-#         serializer = SongSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# class SongDetail(APIView):  
-#     def get_object(self, pk):
-#         try:
-#             return Song.objects.get(pk=pk)
-#         except Song.DoesNotExist:
-#             raise Http404
-     
-#     def get(self, request, pk):
-#         song = self.get_object(pk)
-#         serializer = SongSerializer(song)
-#         return Response(serializer.data)    
-
-#     def put(self, request, pk):     #update one song 
-#         song = self.get_object(pk)
-#         serializer = SongSerializer(song, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-#     def delete(self, request, pk):
-#         song = self.get_object(pk)
-#         song.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
+@api_view(['DELETE'])
+@permission_classes([AllowAny])
+def delete(request, pk):
+    try:
+        comment = Comment.objects.get(id=pk)
+        serializer  = CommentSerializer(comment)
+        comment.delete()
+        return Response(serializer.data)
+    except Comment.DoesNotExist:
+        raise Http404
