@@ -21,10 +21,11 @@ def get_all_comments(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_comment(pk):
+def get_comment(request, pk):
     try:
-        comment = Comment.objects.get(pk=pk)
-        return comment
+        comment = Comment.objects.get(id=pk)
+        serializer  = CommentSerializer(comment)
+        return Response(serializer.data)
     except Comment.DoesNotExist:
         raise Http404
 
@@ -50,7 +51,7 @@ def create_comment(request):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_comment(request, pk):
-    comment = get_comment(pk)
+    comment = Comment.objects.get(id=pk)
     serializer = CommentSerializer(comment, data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -76,6 +77,16 @@ def get_all_replies(request):
     serializer = ReplySerializer 
     serializer = ReplySerializer(reply,many=True)
     return Response(serializer.data) 
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_comment_reply(request, comment_id):
+    try:
+        reply = Reply.objects.filter(comment=comment_id)
+        serializer  = ReplySerializer(reply,many=True)
+        return Response(serializer.data)
+    except Comment.DoesNotExist:
+        raise Http404
 
 
 @api_view(['POST', 'GET'])
