@@ -63,7 +63,7 @@ def get_all_replies(request):
     serializer = ReplySerializer 
     serializer = ReplySerializer(reply,many=True)
     return Response(serializer.data) 
-
+Z
 
 @api_view(['GET'])
 @permission_classes([AllowAny])

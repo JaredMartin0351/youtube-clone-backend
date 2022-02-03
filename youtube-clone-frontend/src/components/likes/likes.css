@@ -1,0 +1,22 @@
+.LikesDislikes {
+    position: relative;
+    margin-top: 10%;
+}
+
+.likeIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: greenyellow;
+}
+
+.likeIconLiked {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: red;
+}
+
+/* change for cap */
