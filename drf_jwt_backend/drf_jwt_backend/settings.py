@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'drf_jwt_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'ytc_backend',
+        'NAME': 'drf_jwt_database',
         'USER': 'root',
-        'PASSWORD': 'example',
+        'PASSWORD': 'Jared0351!',
         'HOST': 'db', 
         'PORT': 3306,
         'OPTIONS': {
